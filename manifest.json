@@ -24,12 +24,9 @@
     "permissions": [
         "activeTab",
         "storage",
-        "contextMenus"
-      ],
-
-    "content_scripts": [{
-        "js":["content.js"],
-        "matches":["http://www.google.com/*"],
-        "css":["style.css"]
-      }]
+        "contextMenus",
+        "http://google.com/*",
+        "tabs",
+        "<all_urls>"
+    ]
 }
