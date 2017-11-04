@@ -16,9 +16,8 @@
     "permissions": [
         "activeTab",
         "storage",
-        "contextMenus",
-        "http://google.com/*"
-    ],
+        "contextMenus"
+      ],
 
     "content_scripts": [{
         "js":["content.js"],

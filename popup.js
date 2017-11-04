@@ -95,6 +95,14 @@ function saveBackgroundColor(url, color) {
   chrome.storage.sync.set(items);
 }
 
+// changes the header to the highlighted text
+function newHeader() {
+  var script = "String s = window.getSelection().toString(); return s;";
+  chrome.tabs.executeScript({
+    code: script
+  });
+}
+
 // This extension loads the saved background color for the current tab if one
 // exists. The user can select a new background color from the dropdown for the
 // current page, and it will be saved as part of the extension's isolated
@@ -122,19 +130,9 @@ document.addEventListener('DOMContentLoaded', () => {
       changeBackgroundColor(dropdown.value);
       saveBackgroundColor(url, dropdown.value);
     });
+
+    ub.addEventListener('click', () => {
+      header.innerHTML = newHeader();
+    });
   });
-});
-
-document.addEventListener('XIF', () => {
-  var commentBox = document.createElement('div')
-  var inputBar = document.createElement('input')
-  var submitButton = document.createElement('button')
-
-
-  commentBox.appendChild('inputBar');
-  commentBox.appendChild('submitButton');
-
-  //Here is where we need to attach this Div to the window
-  document.getElementById('comments').appendChild('commentBox')
-
 });
