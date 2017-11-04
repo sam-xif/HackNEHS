@@ -1,6 +1,15 @@
 // JavaScript source code
 function processSelection(info, tab) {
-    alert("CONTEXT MENU");
+    chrome.tabs.sendRequest(tab.id, { method: "getSelection" }, function (response) {
+        sendServiceRequest(response.data);
+        console.log(response.parentNode);
+
+    });
+}
+
+
+function sendServiceRequest(selectedText) {
+    console.log(selectedText);
 }
 
 chrome.contextMenus.create({
